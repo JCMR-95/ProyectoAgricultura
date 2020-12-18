@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { TextInput, View, StyleSheet, Button } from 'react-native';
+import { TextInput, View, StyleSheet, Button, Alert } from 'react-native';
+import firebase from '../../database/firebase';
  
 const CompraAgregarScreen = (props) => {
     const [state, setState] = useState({

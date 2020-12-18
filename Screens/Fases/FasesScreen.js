@@ -6,7 +6,7 @@ const FasesScreen = (props) => {
   return (
     <View style = {styles.container}>
       <View style={styles.button}>
-        <Button title ="Compra de Semillas" onPress = {() => props.navigation.navigate('Compra de Semillas')}/>
+        <Button title ="Compra de Semillas" onPress = {() => props.navigation.navigate('Listado de Compras')}/>
       </View>
       <View style={styles.button}>
         <Button title ="Sembrado" />
