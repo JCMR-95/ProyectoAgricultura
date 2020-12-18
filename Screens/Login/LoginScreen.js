@@ -32,7 +32,7 @@ const LoginScreen = (props) => {
       <View style = {styles.centerLogo}>
         <Image source = {require('./Icono.png')} style ={styles.logo} />
       </View>
-      <View style = {styles.body}>
+      <View>
         <TextInput placeholder = "Ingrese Nombre" 
                   onChangeText={(value) => handleChangeText(value, "nombreUsuario")}
                   value={state.nombreUsuario}/>

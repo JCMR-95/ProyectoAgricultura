@@ -1,12 +1,49 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { View, StyleSheet, Button } from 'react-native';
  
-export default class FasesScreen extends Component {
-  render() {
-    return (
-      <View>
-        <Text> Hola Mundo! </Text>
+const FasesScreen = (props) => {
+
+  return (
+    <View style = {styles.container}>
+      <View style={styles.button}>
+        <Button title ="Compra de Semillas" onPress = {() => props.navigation.navigate('Compra de Semillas')}/>
       </View>
-    );
-  }
+      <View style={styles.button}>
+        <Button title ="Sembrado" />
+      </View>
+      <View style={styles.button}>
+        <Button title ="Trasplante" />
+      </View>
+      <View style={styles.button}>
+        <Button title ="Crecimiento" />
+      </View>
+      <View style={styles.button}>
+        <Button title ="Cosechas" />
+      </View>
+      <View style={styles.button}>
+        <Button title ="Procesos Finalizados" />
+      </View>
+    </View>
+  );
 }
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#6CF616',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  button: {
+    elevation: 8,
+    backgroundColor: "#009688",
+    borderRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 12,
+    width: 250,
+    height: 60
+  },
+});
+
+export default FasesScreen;
