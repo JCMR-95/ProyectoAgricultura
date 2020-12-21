@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { TextInput, View, StyleSheet, Button, Alert } from 'react-native';
+import { TextInput, View, StyleSheet, Button, Alert, ScrollView } from 'react-native';
 import firebase from '../../database/firebase';
  
 const CompraAgregarScreen = (props) => {
+  
     const [state, setState] = useState({
         tipoPlanta: '',
         fechaElab: '',
@@ -14,8 +15,8 @@ const CompraAgregarScreen = (props) => {
       };
     
       const guardarDatos = async () => {
-        if (state.tipoPlanta === "") {
-          Alert.alert("Debes ingresar un Nombre")
+        if (state.tipoPlanta === "" || state.fechaElab === "" || state.fechaVenc === "") {
+          Alert.alert("Debes completar los Campos")
         } else {
     
           try {
@@ -25,7 +26,7 @@ const CompraAgregarScreen = (props) => {
               fechaVenc: state.fechaVenc,
             });
             Alert.alert("Dato Ingresado!")
-            //props.navigation.navigate('Listado')
+            props.navigation.navigate('Listado de Compras')
     
           } catch (error) {
             console.log(error)
@@ -34,37 +35,38 @@ const CompraAgregarScreen = (props) => {
       };
     
       return(
-    
         <View style={styles.container}>
-    
-          <View style={styles.text}>
-            < TextInput 
-              placeholder="Ingrese Tipo de Planta"
-              onChangeText={(value) => handleChangeText(value, "tipoPlanta")}
-              value={state.tipoPlanta}
-            />
-          </View>
-    
-          <View style={styles.text}>
-            < TextInput placeholder
-              placeholder="Ingrese Fecha de Elaboracion"
-              onChangeText={(value) => handleChangeText(value, "fechaElab")}
-              value={state.fechaElab}
-            />
-          </View>
-    
-          <View style={styles.text}>
-            < TextInput
-              placeholder="Ingrese Fecha de Vencimiento"
-              onChangeText={(value) => handleChangeText(value, "fechaVenc")}
-              value={state.fechaVenc}
-            />
-          </View>
-    
-          <View style={styles.button}>
-            <Button title ="Guardar Datos" onPress = {() => guardarDatos()}/>
-          </View>
-          
+          <ScrollView style={styles.scroll}>
+      
+            <View style={styles.text}>
+              < TextInput 
+                placeholder="Ingrese Tipo de Planta"
+                onChangeText={(value) => handleChangeText(value, "tipoPlanta")}
+                value={state.tipoPlanta}
+              />
+            </View>
+      
+            <View style={styles.text}>
+              < TextInput placeholder
+                placeholder="Ingrese Fecha de Elaboracion"
+                onChangeText={(value) => handleChangeText(value, "fechaElab")}
+                value={state.fechaElab}
+              />
+            </View>
+      
+            <View style={styles.text}>
+              < TextInput
+                placeholder="Ingrese Fecha de Vencimiento"
+                onChangeText={(value) => handleChangeText(value, "fechaVenc")}
+                value={state.fechaVenc}
+              />
+            </View>
+      
+            <View style={styles.button}>
+              <Button title ="Guardar Datos" onPress = {() => guardarDatos()}/>
+            </View>
+            
+          </ScrollView>
         </View>
         
       )
@@ -73,11 +75,12 @@ const CompraAgregarScreen = (props) => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: '#6CF616',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: 35
+      flex: 1,
+      backgroundColor: '#6CF616',
+    },
+    scroll: {
+      flex: 1,
+      padding: 35,
     },
     button: {
         elevation: 8,

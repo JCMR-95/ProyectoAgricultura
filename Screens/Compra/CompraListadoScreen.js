@@ -47,7 +47,7 @@ const CompraListadoScreen = (props) => {
                 />
                 <ListItem.Content>
                   <ListItem.Title>{compra.tipoPlanta}</ListItem.Title>
-                  <ListItem.Subtitle>{compra.id}</ListItem.Subtitle>
+                  <ListItem.Subtitle>{"Código: " + compra.id}</ListItem.Subtitle>
                 </ListItem.Content>
               </ListItem>
             );
