@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import firebase from '../../database/firebase';
  
-const CompraSembradoScreen = (props) => {
+const SembradoTrasplanteScreen = (props) => {
 
     const initialState = {
         id: '',
@@ -17,33 +17,36 @@ const CompraSembradoScreen = (props) => {
     };
 
     const [state, setState] = useState({
-        fechaPlantacion: '',
-        fechaTrasplante: ''
+        fechaTrasplante: '',
+        sector: '',
+        cantPlantas: '',
+        tipoCultivo: ''
     });
 
-    const [compra, setCompra] = useState(initialState);
+    const [sembrado, setSembrado] = useState(initialState);
 
     const handleChangeText = (value, dato) => {
         setState({ ...state, [dato]: value });
     };
 
-    const obtenerCompra = async(id) => {
-        const dbRef = firebase.db.collection("Compras").doc(id);
+    const obtenerSembrado = async(id) => {
+        const dbRef = firebase.db.collection("Sembrados").doc(id);
         const doc = await dbRef.get();
-        const compra = doc.data();
-        setCompra({ ...compra, id: doc.id });
-        setLoading(false);
+        const sembrado = doc.data();
+        setSembrado({ ...sembrado, id: doc.id });
     };
 
-    const sembrar = async () => {
-        if (state.fechaPlantacion === "" || state.fechaTrasplante === "") {
+    const trasplantar = async () => {
+        if (state.fechaTrasplante === "" || state.sector === "" || state.cantPlantas === "" || state.tipoCultivo === "") {
             Alert.alert("Debes completar los Campos")
             } else {
             try {
-                await firebase.db.collection("Sembrados").doc(compra.id).set({
-                    tipoPlanta: compra.tipoPlanta,
-                    fechaPlantacion: state.fechaPlantacion,
-                    fechaTrasplante: state.fechaTrasplante
+                await firebase.db.collection("Trasplantes").doc(sembrado.id).set({
+                    tipoPlanta: sembrado.tipoPlanta,
+                    fechaTrasplante: state.fechaTrasplante,
+                    sector: state.sector,
+                    cantPlantas: state.cantPlantas,
+                    tipoCultivo: state.tipoCultivo
                 });
                 Alert.alert("Datos Ingresado!")
                 borrarDatos()
@@ -56,14 +59,14 @@ const CompraSembradoScreen = (props) => {
 
     const borrarDatos = async () => {
         const dbRef = firebase.db
-          .collection("Compras")
-          .doc(compra.id);
+          .collection("Sembrados")
+          .doc(sembrado.id);
         await dbRef.delete();
         props.navigation.navigate('Fases');
       };
 
     useEffect(() => {
-        obtenerCompra(props.route.params.compraId)
+        obtenerSembrado(props.route.params.sembradoId)
     }, [])
     
     return(
@@ -72,18 +75,10 @@ const CompraSembradoScreen = (props) => {
 
             <View style={styles.text}>
             < TextInput
-                placeholder={compra.tipoPlanta}
-                value={compra.tipoPlanta}
+                placeholder={sembrado.tipoPlanta}
+                value={sembrado.tipoPlanta}
                 editable={false}
                 onChangeText={(value) => handleChangeText(value, "tipoPlanta")}
-            />
-            </View>
-
-            <View style={styles.text}>
-            < TextInput
-                placeholder="Ingrese Fecha de Plantación"
-                onChangeText={(value) => handleChangeText(value, "fechaPlantacion")}
-                value={state.fechaPlantacion}
             />
             </View>
 
@@ -95,8 +90,32 @@ const CompraSembradoScreen = (props) => {
             />
             </View>
 
+            <View style={styles.text}>
+            < TextInput
+                placeholder="Ingrese Sector"
+                onChangeText={(value) => handleChangeText(value, "sector")}
+                value={state.sector}
+            />
+            </View>
+
+            <View style={styles.text}>
+            < TextInput
+                placeholder="Ingrese Cantidad de Plantas"
+                onChangeText={(value) => handleChangeText(value, "cantPlantas")}
+                value={state.cantPlantas}
+            />
+            </View>
+
+            <View style={styles.text}>
+            < TextInput
+                placeholder="Ingrese Tipo de Cultivo"
+                onChangeText={(value) => handleChangeText(value, "tipoCultivo")}
+                value={state.tipoCultivo}
+            />
+            </View>
+
             <View style={styles.button}>
-            <Button color = "green" title ="Confirmar" onPress = {() => sembrar()}/>
+            <Button color = "green" title ="Confirmar" onPress = {() => trasplantar()}/>
             </View>
 
         </ScrollView>
@@ -141,4 +160,4 @@ const styles = StyleSheet.create({
     },
   });
 
-export default CompraSembradoScreen;
+export default SembradoTrasplanteScreen;

@@ -10,6 +10,11 @@ import CompraAgregarScreen from './Screens/Compra/CompraAgregarScreen'
 import CompraDetallesScreen from './Screens/Compra/CompraDetallesScreen'
 import CompraSembradoScreen from './Screens/Compra/CompraSembradoScreen'
 
+import SembradoListadoScreen from './Screens/Sembrado/SembradoListadoScreen'
+import SembradoAgregarScreen from './Screens/Sembrado/SembradoAgregarScreen'
+import SembradoDetallesScreen from './Screens/Sembrado/SembradoDetallesScreen'
+import SembradoTrasplanteScreen from './Screens/Sembrado/SembradoTrasplanteScreen'
+
 
 const Stack = createStackNavigator();
 
@@ -25,6 +30,11 @@ class App extends React.Component {
           <Stack.Screen name="Compra de Semillas" component={CompraAgregarScreen} />
           <Stack.Screen name="Detalles de Compra" component={CompraDetallesScreen} />
           <Stack.Screen name="Sembrar Semillas" component={CompraSembradoScreen} />
+
+          <Stack.Screen name="Listado de Sembrados" component={SembradoListadoScreen} />
+          <Stack.Screen name="Agregar Sembrado" component={SembradoAgregarScreen} />
+          <Stack.Screen name="Detalles de Sembrado" component={SembradoDetallesScreen} />
+          <Stack.Screen name="Realizar Trasplante" component={SembradoTrasplanteScreen} />
 
         </Stack.Navigator>
       </NavigationContainer>
