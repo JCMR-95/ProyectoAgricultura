@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { TextInput, View, StyleSheet, Button, Alert, ScrollView } from 'react-native';
+import DatePicker from 'react-native-datepicker'
 import firebase from '../../database/firebase';
  
 const CompraAgregarScreen = (props) => {
@@ -45,19 +46,55 @@ const CompraAgregarScreen = (props) => {
                 value={state.tipoPlanta}
               />
             </View>
-      
+
             <View style={styles.text}>
-              < TextInput placeholder
+              <DatePicker
+                style={{width: 200}}
+                date={state.fechaElab}
+                mode="date"
                 placeholder="Ingrese Fecha de Elaboracion"
-                onChangeText={(value) => handleChangeText(value, "fechaElab")}
+                format="YYYY-MM-DD"
+                minDate="2019-05-01"
+                confirmBtnText="Confirm"
+                cancelBtnText="Cancel"
+                customStyles={{
+                  dateIcon: {
+                    position: 'absolute',
+                    left: 0,
+                    top: 4,
+                    marginLeft: 0
+                  },
+                  dateInput: {
+                    marginLeft: 36
+                  }
+                }}
+                onDateChange={(value) => handleChangeText(value, "fechaElab")}
                 value={state.fechaElab}
               />
             </View>
       
             <View style={styles.text}>
-              < TextInput
+              <DatePicker
+                style={{width: 200}}
+                date={state.fechaVenc}
+                mode="date"
                 placeholder="Ingrese Fecha de Vencimiento"
-                onChangeText={(value) => handleChangeText(value, "fechaVenc")}
+                format="YYYY-MM-DD"
+                minDate="2019-01-01"
+                confirmBtnText="Confirm"
+                cancelBtnText="Cancel"
+                customStyles={{
+                  dateIcon: {
+                    position: 'absolute',
+                    left: 0,
+                    top: 4,
+                    marginLeft: 0
+                  },
+                  dateInput: {
+                    marginLeft: 36
+                  }
+                }}
+                onDateChange={(value) => handleChangeText(value, "fechaVenc")}
                 value={state.fechaVenc}
               />
             </View>

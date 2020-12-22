@@ -106,16 +106,18 @@ const TrasplanteDetallesScreen = (props) => {
         <View style={styles.text}>
           < TextInput
             placeholder="Ingrese Fecha de Trasplante"
-            value={trasplante.fechaTrasplante}
+            value={"Fecha de Trasplante: " + trasplante.fechaTrasplante}
             editable={false}
             onChangeText={(value) => handleChangeText(value, "fechaTrasplante")}
           />
         </View>
 
+        
+
         <View style={styles.text}>
           < TextInput
             placeholder="Ingrese Sector"
-            value={trasplante.sector}
+            value={"Sector: " + trasplante.sector}
             editable={false}
             onChangeText={(value) => handleChangeText(value, "sector")}
           />
@@ -124,7 +126,7 @@ const TrasplanteDetallesScreen = (props) => {
         <View style={styles.text}>
           < TextInput
             placeholder="Ingrese Cantidad de Plantas"
-            value={trasplante.cantPlantas}
+            value={"Cantidad de Plantas: " + trasplante.cantPlantas}
             editable={false}
             onChangeText={(value) => handleChangeText(value, "cantPlantas")}
           />
@@ -133,14 +135,14 @@ const TrasplanteDetallesScreen = (props) => {
         <View style={styles.text}>
           < TextInput
             placeholder="Ingrese Tipo de Cultivo"
-            value={trasplante.tipoCultivo}
+            value={"Tipo de Cultivo: " + trasplante.tipoCultivo}
             editable={false}
             onChangeText={(value) => handleChangeText(value, "tipoCultivo")}
           />
         </View>
 
         <View style={styles.button}>
-          <Button color = "green" title ="Listo para Trasplantar" onPress = {() => enviarTrasplante()}/>
+          <Button color = "green" title ="Listo para Crecer" onPress = {() => enviarTrasplante()}/>
           <Button color = "red" title ="Eliminar Trasplante" onPress = {() => confirmacionAlerta()}/>
         </View>
         

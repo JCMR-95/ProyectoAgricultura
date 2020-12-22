@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { TextInput, View, StyleSheet, Button, Alert, ScrollView } from 'react-native';
+import DatePicker from 'react-native-datepicker'
 import firebase from '../../database/firebase';
  
 const TrasplanteAgregarScreen = (props) => {
@@ -49,11 +50,29 @@ const TrasplanteAgregarScreen = (props) => {
                 value={state.tipoPlanta}
               />
             </View>
-      
+
             <View style={styles.text}>
-              < TextInput placeholder
+              <DatePicker
+                style={{width: 200}}
+                date={state.fechaTrasplante}
+                mode="date"
                 placeholder="Ingrese Fecha de Trasplante"
-                onChangeText={(value) => handleChangeText(value, "fechaTrasplante")}
+                format="YYYY-MM-DD"
+                minDate="2019-05-01"
+                confirmBtnText="Confirm"
+                cancelBtnText="Cancel"
+                customStyles={{
+                  dateIcon: {
+                    position: 'absolute',
+                    left: 0,
+                    top: 4,
+                    marginLeft: 0
+                  },
+                  dateInput: {
+                    marginLeft: 36
+                  }
+                }}
+                onDateChange={(value) => handleChangeText(value, "fechaTrasplante")}
                 value={state.fechaTrasplante}
               />
             </View>

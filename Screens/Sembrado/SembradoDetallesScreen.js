@@ -104,7 +104,7 @@ const SembradoDetallesScreen = (props) => {
         <View style={styles.text}>
           < TextInput
             placeholder="Ingrese Fecha de Elaboracion"
-            value={sembrado.fechaTrasplante}
+            value={"Fecha de Elaboracion: " + sembrado.fechaTrasplante}
             editable={false}
             onChangeText={(value) => handleChangeText(value, "fechaTrasplante")}
           />
@@ -113,7 +113,7 @@ const SembradoDetallesScreen = (props) => {
         <View style={styles.text}>
           < TextInput
             placeholder="Ingrese Fecha de Vencimiento"
-            value={sembrado.fechaPlantacion}
+            value={"Fecha de Vencimiento: " +sembrado.fechaPlantacion}
             editable={false}
             onChangeText={(value) => handleChangeText(value, "fechaPlantacion")}
           />

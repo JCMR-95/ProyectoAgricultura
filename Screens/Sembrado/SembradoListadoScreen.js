@@ -23,6 +23,17 @@ const SembradoListadoScreen = (props) => {
     });
   }, []);
 
+  var fechaActual = () => {
+    var dia = new Date().getDate(); 
+    var mes = new Date().getMonth() + 1; 
+    var ano = new Date().getFullYear(); 
+
+    var fechaHoy = ano + "-" + mes + "-" + dia;
+    var fechaHoy = fechaHoy;
+
+    return fechaHoy
+  }
+
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -45,10 +56,12 @@ const SembradoListadoScreen = (props) => {
                   }}
                   rounded
                 />
-                <ListItem.Content>
-                  <ListItem.Title>{sembrado.tipoPlanta}</ListItem.Title>
-                  <ListItem.Subtitle>{"Código: " + sembrado.id}</ListItem.Subtitle>
-                </ListItem.Content>
+                <View style={fechaActual() === sembrado.fechaTrasplante ? styles.rojo : styles.verde}>
+                  <ListItem.Content>
+                    <ListItem.Title>{sembrado.tipoPlanta}</ListItem.Title>
+                    <ListItem.Subtitle>{"Código: " + sembrado.id}</ListItem.Subtitle>
+                  </ListItem.Content>
+                </View>
               </ListItem>
             );
           })
@@ -68,6 +81,24 @@ const styles = StyleSheet.create({
     button: {
       elevation: 8,
       backgroundColor: "#009688",
+      borderRadius: 10,
+      paddingVertical: 10,
+      paddingHorizontal: 12,
+      width: 250,
+      height: 60
+    },
+    rojo: {
+      elevation: 8,
+      backgroundColor: "red",
+      borderRadius: 10,
+      paddingVertical: 10,
+      paddingHorizontal: 12,
+      width: 250,
+      height: 60
+    },
+    verde: {
+      elevation: 8,
+      backgroundColor: "green",
       borderRadius: 10,
       paddingVertical: 10,
       paddingHorizontal: 12,

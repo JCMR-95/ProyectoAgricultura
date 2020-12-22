@@ -104,7 +104,7 @@ const CompraDetallesScreen = (props) => {
         <View style={styles.text}>
           < TextInput
             placeholder="Ingrese Fecha de Elaboracion"
-            value={compra.fechaElab}
+            value={"Fecha de Elaboracion: " + compra.fechaElab}
             editable={false}
             onChangeText={(value) => handleChangeText(value, "fechaElab")}
           />
@@ -113,7 +113,7 @@ const CompraDetallesScreen = (props) => {
         <View style={styles.text}>
           < TextInput
             placeholder="Ingrese Fecha de Vencimiento"
-            value={compra.fechaVenc}
+            value={"Fecha de Vencimiento: " + compra.fechaVenc}
             editable={false}
             onChangeText={(value) => handleChangeText(value, "fechaVenc")}
           />
