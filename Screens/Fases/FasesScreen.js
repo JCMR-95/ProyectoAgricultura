@@ -12,7 +12,7 @@ const FasesScreen = (props) => {
         <Button title ="Sembrado" onPress = {() => props.navigation.navigate('Listado de Sembrados')}/>
       </View>
       <View style={styles.button}>
-        <Button title ="Trasplante" />
+        <Button title ="Trasplante" onPress = {() => props.navigation.navigate('Listado de Trasplantes')}/>
       </View>
       <View style={styles.button}>
         <Button title ="Crecimiento" />

@@ -15,6 +15,9 @@ import SembradoAgregarScreen from './Screens/Sembrado/SembradoAgregarScreen'
 import SembradoDetallesScreen from './Screens/Sembrado/SembradoDetallesScreen'
 import SembradoTrasplanteScreen from './Screens/Sembrado/SembradoTrasplanteScreen'
 
+import TrasplanteListadoScreen from './Screens/Trasplantes/TrasplanteListadoScreen'
+import TrasplanteAgregarScreen from './Screens/Trasplantes/TrasplanteAgregarScreen'
+import TrasplanteDetallesScreen from './Screens/Trasplantes/TrasplanteDetallesScreen'
 
 const Stack = createStackNavigator();
 
@@ -35,6 +38,10 @@ class App extends React.Component {
           <Stack.Screen name="Agregar Sembrado" component={SembradoAgregarScreen} />
           <Stack.Screen name="Detalles de Sembrado" component={SembradoDetallesScreen} />
           <Stack.Screen name="Realizar Trasplante" component={SembradoTrasplanteScreen} />
+
+          <Stack.Screen name="Listado de Trasplantes" component={TrasplanteListadoScreen} />
+          <Stack.Screen name="Agregar Trasplante" component={TrasplanteAgregarScreen} />
+          <Stack.Screen name="Detalles de Trasplante" component={TrasplanteDetallesScreen} />
 
         </Stack.Navigator>
       </NavigationContainer>
