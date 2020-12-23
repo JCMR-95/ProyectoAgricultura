@@ -53,7 +53,7 @@ const CompraListadoScreen = (props) => {
                 <Avatar
                   source={{
                     uri:
-                      "https://www.iconpacks.net/icons/2/free-tree-icon-1578-thumb.png",
+                      "https://static.wikia.nocookie.net/arksurvivalevolved_gamepedia/images/3/36/Longrass_Seed.png/revision/latest/scale-to-width-down/1200?cb=20150927172922",
                   }}
                   rounded
                 />

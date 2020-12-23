@@ -54,7 +54,7 @@ const TrasplanteListadoScreen = (props) => {
                 <Avatar
                   source={{
                     uri:
-                      "https://www.iconpacks.net/icons/2/free-tree-icon-1578-thumb.png",
+                      "https://images.vexels.com/media/users/3/201075/isolated/lists/b893c17e341ed4f2734565958a642a77-planta-en-icono-de-maceta.png",
                   }}
                   rounded
                 />

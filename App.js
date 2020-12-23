@@ -18,6 +18,7 @@ import SembradoTrasplanteScreen from './Screens/Sembrado/SembradoTrasplanteScree
 import TrasplanteListadoScreen from './Screens/Trasplantes/TrasplanteListadoScreen'
 import TrasplanteAgregarScreen from './Screens/Trasplantes/TrasplanteAgregarScreen'
 import TrasplanteDetallesScreen from './Screens/Trasplantes/TrasplanteDetallesScreen'
+import TrasplanteCrecimientoScreen from './Screens/Trasplantes/TrasplanteCrecimientoScreen'
 
 const Stack = createStackNavigator();
 
@@ -42,6 +43,7 @@ class App extends React.Component {
           <Stack.Screen name="Listado de Trasplantes" component={TrasplanteListadoScreen} />
           <Stack.Screen name="Agregar Trasplante" component={TrasplanteAgregarScreen} />
           <Stack.Screen name="Detalles de Trasplante" component={TrasplanteDetallesScreen} />
+          <Stack.Screen name="Realizar Crecimiento" component={TrasplanteCrecimientoScreen} />
 
         </Stack.Navigator>
       </NavigationContainer>

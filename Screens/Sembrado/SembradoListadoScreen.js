@@ -52,7 +52,7 @@ const SembradoListadoScreen = (props) => {
                 <Avatar
                   source={{
                     uri:
-                      "https://www.iconpacks.net/icons/2/free-tree-icon-1578-thumb.png",
+                      "https://images.vexels.com/media/users/3/201197/isolated/lists/c688e39bf4e07c2ea1aa3b496b3a5f02-icono-plano-de-semillas-germinadas.png",
                   }}
                   rounded
                 />
