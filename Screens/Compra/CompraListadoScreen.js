@@ -24,15 +24,22 @@ const CompraListadoScreen = (props) => {
     });
   }, []);
 
-  var fechaActual = () => {
+  var fechaCritica = (fechaVencimiento) => {
     var dia = new Date().getDate(); 
     var mes = new Date().getMonth() + 1; 
     var ano = new Date().getFullYear(); 
 
     var fechaHoy = ano + "-" + mes + "-" + dia;
-    var fechaHoy = fechaHoy;
 
-    return fechaHoy
+    var restaFechas = new Date(fechaHoy).getTime() - new Date(fechaVencimiento).getTime();
+    var valorNumerico = Math.floor(restaFechas / (1000 * 60 * 60 * 24));
+
+    var critico = false
+
+    if((valorNumerico >= -2)){
+      critico = true;
+    }
+    return critico
   }
 
   return (
@@ -57,7 +64,7 @@ const CompraListadoScreen = (props) => {
                   }}
                   rounded
                 />
-                <View style={fechaActual() === compra.fechaVenc ? styles.rojo : styles.verde}>
+                <View style={fechaCritica(compra.fechaVenc) ? styles.rojo : styles.verde}>
                   <ListItem.Content>
                     <ListItem.Title>{compra.tipoPlanta}</ListItem.Title>
                     <ListItem.Subtitle>{"Código: " + compra.id}</ListItem.Subtitle>

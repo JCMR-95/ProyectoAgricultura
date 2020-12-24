@@ -30,7 +30,6 @@ const CrecimientoListadoScreen = (props) => {
     var ano = new Date().getFullYear(); 
 
     var fechaHoy = ano + "-" + mes + "-" + dia;
-    var fechaHoy = fechaHoy;
 
     return fechaHoy
   }

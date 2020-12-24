@@ -25,15 +25,22 @@ const TrasplanteListadoScreen = (props) => {
     });
   }, []);
 
-  var fechaActual = () => {
+  var fechaCritica = (fechaTraspl) => {
     var dia = new Date().getDate(); 
     var mes = new Date().getMonth() + 1; 
     var ano = new Date().getFullYear(); 
 
     var fechaHoy = ano + "-" + mes + "-" + dia;
-    var fechaHoy = fechaHoy;
 
-    return fechaHoy
+    var restaFechas = new Date(fechaHoy).getTime() - new Date(fechaTraspl).getTime();
+    var valorNumerico = Math.floor(restaFechas / (1000 * 60 * 60 * 24));
+
+    var critico = false
+
+    if((valorNumerico >= -2)){
+      critico = true;
+    }
+    return critico
   }
 
   return (
@@ -58,7 +65,7 @@ const TrasplanteListadoScreen = (props) => {
                   }}
                   rounded
                 />
-                <View style={fechaActual() === trasplante.fechaTrasplante ? styles.rojo : styles.verde}>
+                <View style={fechaCritica(trasplante.fechaTrasplante) ? styles.rojo : styles.verde}>
                   <ListItem.Content>
                     <ListItem.Title>{trasplante.tipoPlanta}</ListItem.Title>
                     <ListItem.Subtitle>{"Código: " + trasplante.id}</ListItem.Subtitle>

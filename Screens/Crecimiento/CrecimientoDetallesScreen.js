@@ -17,7 +17,7 @@ const CrecimientoDetallesScreen = (props) => {
     tipoPlanta: '',
     fechaTrasplante: '',
     ph: '',
-    agregarPH: ''
+    agregadoPH: ''
   };
 
   const [crecimiento, setCrecimiento] = useState(initialState);
@@ -122,10 +122,10 @@ const CrecimientoDetallesScreen = (props) => {
 
         <View style={styles.text}>
           < TextInput
-            placeholder="Ingrese Cantidad de Plantas"
-            value={"Cantidad de Plantas: " + crecimiento.agregarPH}
+            placeholder="¿Agregó algo para modificar el PH (Opcional)"
+            value={"Agregado al PH: " + crecimiento.agregadoPH}
             editable={false}
-            onChangeText={(value) => handleChangeText(value, "agregarPH")}
+            onChangeText={(value) => handleChangeText(value, "agregadoPH")}
           />
         </View>
 

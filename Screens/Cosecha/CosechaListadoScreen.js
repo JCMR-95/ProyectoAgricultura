@@ -31,18 +31,12 @@ const CosechaListadoScreen = (props) => {
         {
           cosechas.map(cosecha => {
             return(
-                <ListItem key={cosecha.id} bottomDivider
-                    onPress={() => {
-                    props.navigation.navigate("Detalles de Cosecha", {
-                        cosechaId: cosecha.id,
-                    });
-                    }}
-                >
+              <ListItem key={cosecha.id} bottomDivider>
                 <ListItem.Chevron />
                 <Avatar
                   source={{
                     uri:
-                      "https://images.vexels.com/media/users/3/127670/isolated/lists/1c400fa105ae69ed69e526f8a4a96a76-tina-de-planta-de-flor-plana.png",
+                      "https://images.vexels.com/media/users/3/129590/isolated/preview/03502689234b5e219cb4b03b6d57e00d-malet--n-con-el-icono-de-signo-de-d--lar-by-vexels.png",
                   }}
                   rounded
                 />
@@ -50,6 +44,8 @@ const CosechaListadoScreen = (props) => {
                   <ListItem.Content>
                     <ListItem.Title>{cosecha.tipoPlanta}</ListItem.Title>
                     <ListItem.Subtitle>{"Cantidad de Paquetes Vendidos: " + cosecha.cantVentas}</ListItem.Subtitle>
+                    <ListItem.Subtitle>{"Fecha de Cosecha: " + cosecha.fechaCosecha}</ListItem.Subtitle>
+                    <ListItem.Subtitle>{"Código: " + cosecha.id}</ListItem.Subtitle>
                   </ListItem.Content>
                 </View>
               </ListItem>
@@ -84,7 +80,7 @@ const styles = StyleSheet.create({
       paddingVertical: 10,
       paddingHorizontal: 12,
       width: 250,
-      height: 60
+      height: 85
     },
   });
 
