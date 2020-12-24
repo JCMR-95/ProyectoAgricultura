@@ -15,13 +15,10 @@ const FasesScreen = (props) => {
         <Button title ="Trasplante" onPress = {() => props.navigation.navigate('Listado de Trasplantes')}/>
       </View>
       <View style={styles.button}>
-        <Button title ="Crecimiento" />
+        <Button title ="Crecimiento" onPress = {() => props.navigation.navigate('Listado de Crecimientos')}/>
       </View>
       <View style={styles.button}>
-        <Button title ="Cosechas" />
-      </View>
-      <View style={styles.button}>
-        <Button title ="Procesos Finalizados" />
+        <Button title ="Cosechas" onPress = {() => props.navigation.navigate('Listado de Cosechas')}/>
       </View>
     </View>
   );

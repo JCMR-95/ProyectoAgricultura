@@ -15,10 +15,19 @@ import SembradoAgregarScreen from './Screens/Sembrado/SembradoAgregarScreen'
 import SembradoDetallesScreen from './Screens/Sembrado/SembradoDetallesScreen'
 import SembradoTrasplanteScreen from './Screens/Sembrado/SembradoTrasplanteScreen'
 
-import TrasplanteListadoScreen from './Screens/Trasplantes/TrasplanteListadoScreen'
-import TrasplanteAgregarScreen from './Screens/Trasplantes/TrasplanteAgregarScreen'
-import TrasplanteDetallesScreen from './Screens/Trasplantes/TrasplanteDetallesScreen'
-import TrasplanteCrecimientoScreen from './Screens/Trasplantes/TrasplanteCrecimientoScreen'
+import TrasplanteListadoScreen from './Screens/Trasplante/TrasplanteListadoScreen'
+import TrasplanteAgregarScreen from './Screens/Trasplante/TrasplanteAgregarScreen'
+import TrasplanteDetallesScreen from './Screens/Trasplante/TrasplanteDetallesScreen'
+import TrasplanteCrecimientoScreen from './Screens/Trasplante/TrasplanteCrecimientoScreen'
+
+import CrecimientoListadoScreen from './Screens/Crecimiento/CrecimientoListadoScreen'
+import CrecimientoAgregarScreen from './Screens/Crecimiento/CrecimientoAgregarScreen'
+import CrecimientoDetallesScreen from './Screens/Crecimiento/CrecimientoDetallesScreen'
+import CrecimientoCosechaScreen from './Screens/Crecimiento/CrecimientoCosechaScreen'
+
+import CosechaListadoScreen from './Screens/Cosecha/CosechaListadoScreen'
+import CosechaAgregarScreen from './Screens/Cosecha/CosechaAgregarScreen'
+import CosechaDetallesScreen from './Screens/Cosecha/CosechaDetallesScreen'
 
 const Stack = createStackNavigator();
 
@@ -44,6 +53,15 @@ class App extends React.Component {
           <Stack.Screen name="Agregar Trasplante" component={TrasplanteAgregarScreen} />
           <Stack.Screen name="Detalles de Trasplante" component={TrasplanteDetallesScreen} />
           <Stack.Screen name="Realizar Crecimiento" component={TrasplanteCrecimientoScreen} />
+
+          <Stack.Screen name="Listado de Crecimientos" component={CrecimientoListadoScreen} />
+          <Stack.Screen name="Agregar Crecimiento" component={CrecimientoAgregarScreen} />
+          <Stack.Screen name="Detalles de Crecimiento" component={CrecimientoDetallesScreen} />
+          <Stack.Screen name="Realizar Cosecha" component={CrecimientoCosechaScreen} />
+
+          <Stack.Screen name="Listado de Cosechas" component={CosechaListadoScreen} />
+          <Stack.Screen name="Agregar Cosecha" component={CosechaAgregarScreen} />
+          <Stack.Screen name="Detalles de Cosecha" component={CosechaDetallesScreen} />
 
         </Stack.Navigator>
       </NavigationContainer>

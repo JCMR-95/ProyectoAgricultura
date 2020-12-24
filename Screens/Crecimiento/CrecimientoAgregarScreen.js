@@ -1,84 +1,52 @@
-import React, {useEffect, useState} from 'react';
-import {
-  Button,
-  View,
-  StyleSheet,
-  TextInput,
-  ScrollView,
-  Alert
-} from "react-native";
+import React, { useState } from 'react';
+import { TextInput, View, StyleSheet, Button, Alert, ScrollView } from 'react-native';
 import DatePicker from 'react-native-datepicker'
 import firebase from '../../database/firebase';
  
-const TrasplanteCrecimientoScreen = (props) => {
-
-    const initialState = {
-        id: '',
-        tipoPlanta: ''
-    };
-
+const CrecimientoAgregarScreen = (props) => {
+  
     const [state, setState] = useState({
+        tipoPlanta: '',
         fechaTrasplante: '',
         ph: '',
         agregadoPH: ''
-    });
-
-    const [trasplante, setTrasplante] = useState(initialState);
-
-    const handleChangeText = (value, dato) => {
+      });
+    
+      const handleChangeText = (value, dato) => {
         setState({ ...state, [dato]: value });
-    };
-
-    const obtenerTrasplante = async(id) => {
-        const dbRef = firebase.db.collection("Trasplantes").doc(id);
-        const doc = await dbRef.get();
-        const trasplante = doc.data();
-        setTrasplante({ ...trasplante, id: doc.id });
-    };
-
-    const trasplantar = async () => {
-        if (state.fechaTrasplante === "" || state.ph === "") {
-            Alert.alert("Debes completar los Campos")
-            } else {
-            try {
-                await firebase.db.collection("Crecimientos").doc(trasplante.id).set({
-                    tipoPlanta: trasplante.tipoPlanta,
-                    fechaTrasplante: state.fechaTrasplante,
-                    ph: state.ph,
-                    agregadoPH: state.agregadoPH
-                });
-                Alert.alert("Datos Ingresado!")
-                borrarDatos()
-    
-            } catch (error) {
-            console.log(error)
-            }
-        }
-    };
-
-    const borrarDatos = async () => {
-        const dbRef = firebase.db
-          .collection("Trasplantes")
-          .doc(trasplante.id);
-        await dbRef.delete();
-        props.navigation.navigate('Fases');
       };
-
-    useEffect(() => {
-        obtenerTrasplante(props.route.params.trasplanteId)
-    }, [])
     
-    return(
-    <View style={styles.container}>
-        <ScrollView style={styles.scroll}>
-
+      const guardarDatos = async () => {
+        if (state.tipoPlanta === "" || state.fechaTrasplante === "" || state.ph === "") {
+          Alert.alert("Debes completar los Campos")
+        } else {
+    
+          try {
+            await firebase.db.collection("Crecimientos").add({
+              tipoPlanta: state.tipoPlanta,
+              fechaTrasplante: state.fechaTrasplante,
+              ph: state.ph,
+              agregadoPH: state.agregadoPH
+            });
+            Alert.alert("Dato Ingresado!")
+            props.navigation.navigate('Listado de Crecimientos')
+    
+          } catch (error) {
+            console.log(error)
+          }
+        }
+      };
+    
+      return(
+        <View style={styles.container}>
+          <ScrollView style={styles.scroll}>
+      
             <View style={styles.text}>
-            < TextInput
-                placeholder={trasplante.tipoPlanta}
-                value={trasplante.tipoPlanta}
-                editable={false}
+              < TextInput 
+                placeholder="Ingrese Tipo de Planta"
                 onChangeText={(value) => handleChangeText(value, "tipoPlanta")}
-            />
+                value={state.tipoPlanta}
+              />
             </View>
 
             <View style={styles.text}>
@@ -106,31 +74,31 @@ const TrasplanteCrecimientoScreen = (props) => {
                 value={state.fechaTrasplante}
               />
             </View>
-
+      
             <View style={styles.text}>
-            < TextInput
+              < TextInput
                 placeholder="Ingrese PH"
                 onChangeText={(value) => handleChangeText(value, "ph")}
                 value={state.ph}
-            />
+              />
             </View>
 
             <View style={styles.text}>
-            < TextInput
+              < TextInput
                 placeholder="¿Agregó algo para modificar el PH (Opcional)"
                 onChangeText={(value) => handleChangeText(value, "agregadoPH")}
                 value={state.agregadoPH}
-            />
+              />
             </View>
-
+      
             <View style={styles.button}>
-            <Button color = "green" title ="Confirmar" onPress = {() => trasplantar()}/>
+              <Button title ="Guardar Datos" onPress = {() => guardarDatos()}/>
             </View>
-
-        </ScrollView>
-    </View>
+            
+          </ScrollView>
+        </View>
         
-    )
+      )
   
 }
 
@@ -169,4 +137,4 @@ const styles = StyleSheet.create({
     },
   });
 
-export default TrasplanteCrecimientoScreen;
+export default CrecimientoAgregarScreen;

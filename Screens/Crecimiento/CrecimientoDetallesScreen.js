@@ -10,48 +10,47 @@ import {
 } from "react-native";
 import firebase from '../../database/firebase';
 
-const TrasplanteDetallesScreen = (props) => {
+const CrecimientoDetallesScreen = (props) => {
 
   const initialState = {
     id: '',
     tipoPlanta: '',
     fechaTrasplante: '',
-    sector: '',
-    cantPlantas: '',
-    tipoCultivo: ''
+    ph: '',
+    agregarPH: ''
   };
 
-  const [trasplante, setTrasplante] = useState(initialState);
+  const [crecimiento, setCrecimiento] = useState(initialState);
   const [loading, setLoading] = useState(true);
 
   const handleChangeText = (value, dato) => {
-    setTrasplante({ ...trasplante, [dato]: value });
+    setCrecimiento({ ...crecimiento, [dato]: value });
   };
 
-  const obtenerTrasplante = async(id) => {
-    const dbRef = firebase.db.collection("Trasplantes").doc(id);
+  const obtenerCrecimiento = async(id) => {
+    const dbRef = firebase.db.collection("Crecimientos").doc(id);
     const doc = await dbRef.get();
-    const trasplante = doc.data();
-    setTrasplante({ ...trasplante, id: doc.id });
+    const crecimiento = doc.data();
+    setCrecimiento({ ...crecimiento, id: doc.id });
     setLoading(false);
   }
 
-  const borrarTrasplante = async () => {
+  const borrarCrecimiento = async () => {
     setLoading(true)
     const dbRef = firebase.db
-      .collection("Trasplantes")
-      .doc(props.route.params.trasplanteId);
+      .collection("Crecimientos")
+      .doc(props.route.params.crecimientoId);
     await dbRef.delete();
     setLoading(false)
-    props.navigation.navigate("Listado de Trasplantes");
+    props.navigation.navigate("Listado de Crecimientos");
   };
 
   const confirmacionAlerta = () => {
     Alert.alert(
-      "Borrar Trasplante",
-      "¿Estás seguro de borrar este Trasplante?",
+      "Borrar Crecimiento",
+      "¿Estás seguro de borrar este Crecimiento?",
       [
-        { text: "Sí", onPress: () => borrarTrasplante() },
+        { text: "Sí", onPress: () => borrarCrecimiento() },
         { text: "No" },
       ],
       {
@@ -60,12 +59,12 @@ const TrasplanteDetallesScreen = (props) => {
     );
   };
 
-  const enviarTrasplante = () => {
+  const enviarCrecimiento = () => {
     Alert.alert(
-      "Realizar Crecimiento",
-      "¿Estás seguro de hacer crecer a la Planta?",
+      "Realizar Cosecha",
+      "¿Estás seguro de cosechar esta Planta?",
       [
-        { text: "Sí", onPress: () => props.navigation.navigate("Realizar Crecimiento", {trasplanteId: trasplante.id,})},
+        { text: "Sí", onPress: () => props.navigation.navigate("Realizar Cosecha", {crecimientoId: crecimiento.id,})},
         { text: "No"},
       ],
       {
@@ -78,7 +77,7 @@ const TrasplanteDetallesScreen = (props) => {
 
 
   useEffect(() => {
-    obtenerTrasplante(props.route.params.trasplanteId)
+    obtenerCrecimiento(props.route.params.crecimientoId)
   }, [])
 
   if (loading) {
@@ -97,7 +96,7 @@ const TrasplanteDetallesScreen = (props) => {
         <View style={styles.text}>
           < TextInput
             placeholder="Ingrese Tipo de Planta"
-            value={trasplante.tipoPlanta}
+            value={crecimiento.tipoPlanta}
             editable={false}
             onChangeText={(value) => handleChangeText(value, "tipoPlanta")}
           />
@@ -106,44 +105,33 @@ const TrasplanteDetallesScreen = (props) => {
         <View style={styles.text}>
           < TextInput
             placeholder="Ingrese Fecha de Trasplante"
-            value={"Fecha de Trasplante: " + trasplante.fechaTrasplante}
+            value={"Fecha de Trasplante: " + crecimiento.fechaTrasplante}
             editable={false}
             onChangeText={(value) => handleChangeText(value, "fechaTrasplante")}
           />
-        </View>
-
-        
+        </View>        
 
         <View style={styles.text}>
           < TextInput
-            placeholder="Ingrese Sector"
-            value={"Sector: " + trasplante.sector}
+            placeholder="Ingrese PH"
+            value={"PH: " + crecimiento.ph}
             editable={false}
-            onChangeText={(value) => handleChangeText(value, "sector")}
+            onChangeText={(value) => handleChangeText(value, "ph")}
           />
         </View>
 
         <View style={styles.text}>
           < TextInput
             placeholder="Ingrese Cantidad de Plantas"
-            value={"Cantidad de Plantas: " + trasplante.cantPlantas}
+            value={"Cantidad de Plantas: " + crecimiento.agregarPH}
             editable={false}
-            onChangeText={(value) => handleChangeText(value, "cantPlantas")}
-          />
-        </View>
-
-        <View style={styles.text}>
-          < TextInput
-            placeholder="Ingrese Tipo de Cultivo"
-            value={"Tipo de Cultivo: " + trasplante.tipoCultivo}
-            editable={false}
-            onChangeText={(value) => handleChangeText(value, "tipoCultivo")}
+            onChangeText={(value) => handleChangeText(value, "agregarPH")}
           />
         </View>
 
         <View style={styles.button}>
-          <Button color = "green" title ="Listo para Crecer" onPress = {() => enviarTrasplante()}/>
-          <Button color = "red" title ="Eliminar Trasplante" onPress = {() => confirmacionAlerta()}/>
+          <Button color = "green" title ="Listo para Cosechar" onPress = {() => enviarCrecimiento()}/>
+          <Button color = "red" title ="Eliminar Crecimiento" onPress = {() => confirmacionAlerta()}/>
         </View>
         
       </ScrollView>
@@ -179,4 +167,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default TrasplanteDetallesScreen;
+export default CrecimientoDetallesScreen;
