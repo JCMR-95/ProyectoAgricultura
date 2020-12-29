@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button, ScrollView, StyleSheet, View } from "react-native";
 import { ListItem, Avatar } from "react-native-elements";
-import { State } from "react-native-gesture-handler";
 import firebase from '../../database/firebase';
 
 const CompraListadoScreen = (props) => {
@@ -24,14 +23,14 @@ const CompraListadoScreen = (props) => {
     });
   }, []);
 
-  var fechaCritica = (fechaVencimiento) => {
+  var fechaCritica = (fechaLimite) => {
     var dia = new Date().getDate(); 
     var mes = new Date().getMonth() + 1; 
     var ano = new Date().getFullYear(); 
 
     var fechaHoy = ano + "-" + mes + "-" + dia;
 
-    var restaFechas = new Date(fechaHoy).getTime() - new Date(fechaVencimiento).getTime();
+    var restaFechas = new Date(fechaHoy).getTime() - new Date(fechaLimite).getTime();
     var valorNumerico = Math.floor(restaFechas / (1000 * 60 * 60 * 24));
 
     var critico = false

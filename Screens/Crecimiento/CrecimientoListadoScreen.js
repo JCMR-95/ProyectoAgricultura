@@ -24,14 +24,22 @@ const CrecimientoListadoScreen = (props) => {
     });
   }, []);
 
-  var fechaActual = () => {
+  var fechaCritica = (fechaLimite) => {
     var dia = new Date().getDate(); 
     var mes = new Date().getMonth() + 1; 
     var ano = new Date().getFullYear(); 
 
     var fechaHoy = ano + "-" + mes + "-" + dia;
 
-    return fechaHoy
+    var restaFechas = new Date(fechaHoy).getTime() - new Date(fechaLimite).getTime();
+    var valorNumerico = Math.floor(restaFechas / (1000 * 60 * 60 * 24));
+
+    var critico = false
+
+    if((valorNumerico >= -2)){
+      critico = true;
+    }
+    return critico
   }
 
   return (
@@ -56,7 +64,7 @@ const CrecimientoListadoScreen = (props) => {
                   }}
                   rounded
                 />
-                <View style={fechaActual() === crecimiento.fechaTrasplante ? styles.rojo : styles.verde}>
+                <View style={fechaCritica(crecimiento.fechaTrasplante) ? styles.rojo : styles.verde}>
                   <ListItem.Content>
                     <ListItem.Title>{crecimiento.tipoPlanta}</ListItem.Title>
                     <ListItem.Subtitle>{"Código: " + crecimiento.id}</ListItem.Subtitle>

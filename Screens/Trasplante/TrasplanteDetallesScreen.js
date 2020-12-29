@@ -72,9 +72,25 @@ const TrasplanteDetallesScreen = (props) => {
         cancelable: true,
       }
     );
-    
-
   };
+
+  var fechaCritica = (fechaLimite) => {
+    var dia = new Date().getDate(); 
+    var mes = new Date().getMonth() + 1; 
+    var ano = new Date().getFullYear(); 
+
+    var fechaHoy = ano + "-" + mes + "-" + dia;
+
+    var restaFechas = new Date(fechaHoy).getTime() - new Date(fechaLimite).getTime();
+    var valorNumerico = Math.floor(restaFechas / (1000 * 60 * 60 * 24));
+
+    var critico = false
+
+    if((valorNumerico >= -2)){
+      critico = true;
+    }
+    return critico
+  }
 
 
   useEffect(() => {
@@ -103,7 +119,7 @@ const TrasplanteDetallesScreen = (props) => {
           />
         </View>
 
-        <View style={styles.text}>
+        <View style={fechaCritica(trasplante.fechaTrasplante) ? styles.textCritico : styles.text}>
           < TextInput
             placeholder="Ingrese Fecha de Trasplante"
             value={"Fecha de Trasplante: " + trasplante.fechaTrasplante}
@@ -162,6 +178,14 @@ const styles = StyleSheet.create({
   text: {
     flex: 1,
     padding: 0,
+    marginBottom: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: "#cccccc",
+  },
+  textCritico: {
+    flex: 1,
+    padding: 0,
+    backgroundColor: "#FFD800",
     marginBottom: 15,
     borderBottomWidth: 1,
     borderBottomColor: "#cccccc",

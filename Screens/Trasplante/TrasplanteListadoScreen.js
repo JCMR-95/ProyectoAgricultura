@@ -25,14 +25,14 @@ const TrasplanteListadoScreen = (props) => {
     });
   }, []);
 
-  var fechaCritica = (fechaTraspl) => {
+  var fechaCritica = (fechaLimite) => {
     var dia = new Date().getDate(); 
     var mes = new Date().getMonth() + 1; 
     var ano = new Date().getFullYear(); 
 
     var fechaHoy = ano + "-" + mes + "-" + dia;
 
-    var restaFechas = new Date(fechaHoy).getTime() - new Date(fechaTraspl).getTime();
+    var restaFechas = new Date(fechaHoy).getTime() - new Date(fechaLimite).getTime();
     var valorNumerico = Math.floor(restaFechas / (1000 * 60 * 60 * 24));
 
     var critico = false
