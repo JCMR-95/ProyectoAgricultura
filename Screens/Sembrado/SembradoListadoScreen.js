@@ -24,9 +24,17 @@ const SembradoListadoScreen = (props) => {
   }, []);
 
   var fechaCritica = (fechaLimite) => {
+    
     var dia = new Date().getDate(); 
     var mes = new Date().getMonth() + 1; 
     var ano = new Date().getFullYear(); 
+
+    if(dia < 10){
+      dia = "0" + dia
+    }
+    if(mes < 10){
+      mes = "0" + mes
+    }
 
     var fechaHoy = ano + "-" + mes + "-" + dia;
 
@@ -83,7 +91,7 @@ const SembradoListadoScreen = (props) => {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#6CF616',
+      backgroundColor: '#5FD417',
     },
     button: {
       elevation: 8,

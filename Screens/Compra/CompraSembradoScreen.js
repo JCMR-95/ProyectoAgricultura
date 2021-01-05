@@ -46,7 +46,7 @@ const CompraSembradoScreen = (props) => {
                     fechaPlantacion: state.fechaPlantacion,
                     fechaTrasplante: state.fechaTrasplante
                 });
-                Alert.alert("Datos Ingresado!")
+                Alert.alert("Datos Ingresados!")
                 borrarDatos()
     
             } catch (error) {
@@ -146,7 +146,7 @@ const CompraSembradoScreen = (props) => {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#6CF616',
+      backgroundColor: '#5FD417',
     },
     scroll: {
       flex: 1,

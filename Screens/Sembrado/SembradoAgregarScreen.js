@@ -113,7 +113,7 @@ const SembradoAgregarScreen = (props) => {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#6CF616',
+      backgroundColor: '#5FD417',
     },
     scroll: {
       flex: 1,

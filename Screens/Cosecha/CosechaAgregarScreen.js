@@ -26,7 +26,7 @@ const CosechaAgregarScreen = (props) => {
               fechaCosecha: state.fechaCosecha,
               cantVentas: state.cantVentas,
             });
-            Alert.alert("Dato Ingresado!")
+            Alert.alert("Dato Ingresados!")
             props.navigation.navigate('Listado de Cosechas')
     
           } catch (error) {
@@ -95,7 +95,7 @@ const CosechaAgregarScreen = (props) => {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#6CF616',
+      backgroundColor: '#5FD417',
     },
     scroll: {
       flex: 1,

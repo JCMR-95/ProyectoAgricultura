@@ -73,9 +73,17 @@ const SembradoDetallesScreen = (props) => {
   };
 
   var fechaCritica = (fechaLimite) => {
+
     var dia = new Date().getDate(); 
     var mes = new Date().getMonth() + 1; 
     var ano = new Date().getFullYear(); 
+
+    if(dia < 10){
+      dia = "0" + dia
+    }
+    if(mes < 10){
+      mes = "0" + mes
+    }
 
     var fechaHoy = ano + "-" + mes + "-" + dia;
 
@@ -149,7 +157,7 @@ const SembradoDetallesScreen = (props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#6CF616',
+    backgroundColor: '#5FD417',
   },
   scroll: {
     flex: 1,
@@ -168,7 +176,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFD800",
     marginBottom: 15,
     borderBottomWidth: 1,
-    borderBottomColor: "#cccccc",
+    borderBottomColor: "#A80303",
   },
   loader: {
     left: 0,

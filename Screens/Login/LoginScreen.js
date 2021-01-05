@@ -52,12 +52,12 @@ const LoginScreen = (props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#6CF616',
+    backgroundColor: '#5FD417',
     alignItems: 'center',
     justifyContent: 'center',
   },
   logo : {
-    width: 100,
+    width: 160,
     height: 160
   },
   centerLogo : {
