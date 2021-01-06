@@ -26,7 +26,7 @@ const CosechaAgregarScreen = (props) => {
               fechaCosecha: state.fechaCosecha,
               cantVentas: state.cantVentas,
             });
-            Alert.alert("Dato Ingresados!")
+            Alert.alert("Datos Ingresados!")
             props.navigation.navigate('Listado de Cosechas')
     
           } catch (error) {

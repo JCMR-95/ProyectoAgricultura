@@ -45,7 +45,7 @@ const CrecimientoCosechaScreen = (props) => {
                     fechaCosecha: state.fechaCosecha,
                     cantVentas: state.cantVentas
                 });
-                Alert.alert("Datos Ingresado!")
+                Alert.alert("Datos Ingresados!")
                 borrarDatos()
     
             } catch (error) {

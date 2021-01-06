@@ -26,7 +26,7 @@ const CompraAgregarScreen = (props) => {
               fechaElab: state.fechaElab,
               fechaVenc: state.fechaVenc,
             });
-            Alert.alert("Dato Ingresado!")
+            Alert.alert("Datos Ingresados!")
             props.navigation.navigate('Listado de Compras')
     
           } catch (error) {

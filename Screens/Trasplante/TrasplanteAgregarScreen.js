@@ -30,7 +30,7 @@ const TrasplanteAgregarScreen = (props) => {
               cantPlantas: state.cantPlantas,
               tipoCultivo: state.tipoCultivo,
             });
-            Alert.alert("Dato Ingresado!")
+            Alert.alert("Datos Ingresados!")
             props.navigation.navigate('Listado de Trasplantes')
     
           } catch (error) {

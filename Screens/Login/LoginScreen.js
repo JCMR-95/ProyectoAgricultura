@@ -14,8 +14,8 @@ const LoginScreen = (props) => {
 
   const confirmacion = async() => { 
 
-    if (state.nombreUsuario == "Administrador") {
-      if(state.contrasena == "Administrador" || state.contrasena == "administrador" ){
+    if (state.nombreUsuario == "Admin") {
+      if(state.contrasena == "Admin" || state.contrasena == "admin" ){
         Alert.alert("Bienvenido!")
         props.navigation.navigate('Fases')
         

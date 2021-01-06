@@ -47,7 +47,7 @@ const TrasplanteCrecimientoScreen = (props) => {
                     ph: state.ph,
                     agregadoPH: state.agregadoPH
                 });
-                Alert.alert("Datos Ingresado!")
+                Alert.alert("Datos Ingresados!")
                 borrarDatos()
     
             } catch (error) {

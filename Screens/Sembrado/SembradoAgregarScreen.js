@@ -26,7 +26,7 @@ const SembradoAgregarScreen = (props) => {
               fechaTrasplante: state.fechaTrasplante,
               fechaPlantacion: state.fechaPlantacion,
             });
-            Alert.alert("Dato Ingresado!")
+            Alert.alert("Datos Ingresados!")
             props.navigation.navigate('Listado de Sembrados')
     
           } catch (error) {

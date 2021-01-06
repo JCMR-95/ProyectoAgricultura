@@ -27,6 +27,7 @@ import CrecimientoCosechaScreen from './Screens/Crecimiento/CrecimientoCosechaSc
 
 import CosechaListadoScreen from './Screens/Cosecha/CosechaListadoScreen'
 import CosechaAgregarScreen from './Screens/Cosecha/CosechaAgregarScreen'
+import CosechaDetallesScreen from './Screens/Cosecha/CosechaDetallesScreen'
 
 const Stack = createStackNavigator();
 
@@ -60,6 +61,7 @@ class App extends React.Component {
 
           <Stack.Screen name="Listado de Cosechas" component={CosechaListadoScreen} />
           <Stack.Screen name="Agregar Cosecha" component={CosechaAgregarScreen} />
+          <Stack.Screen name="Detalles de Cosecha" component={CosechaDetallesScreen} />
 
         </Stack.Navigator>
       </NavigationContainer>

@@ -49,7 +49,7 @@ const SembradoTrasplanteScreen = (props) => {
                     cantPlantas: state.cantPlantas,
                     tipoCultivo: state.tipoCultivo
                 });
-                Alert.alert("Datos Ingresado!")
+                Alert.alert("Datos Ingresados!")
                 borrarDatos()
     
             } catch (error) {

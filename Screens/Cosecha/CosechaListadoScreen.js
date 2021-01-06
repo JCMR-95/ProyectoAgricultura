@@ -31,7 +31,13 @@ const CosechaListadoScreen = (props) => {
         {
           cosechas.map(cosecha => {
             return(
-              <ListItem key={cosecha.id} bottomDivider>
+              <ListItem key={cosecha.id} bottomDivider
+                onPress={() => {
+                  props.navigation.navigate("Detalles de Cosecha", {
+                    cosechaId: cosecha.id,
+                  });
+                }}
+              >
                 <ListItem.Chevron />
                 <Avatar
                   source={{

@@ -28,7 +28,7 @@ const CrecimientoAgregarScreen = (props) => {
               ph: state.ph,
               agregadoPH: state.agregadoPH
             });
-            Alert.alert("Dato Ingresado!")
+            Alert.alert("Datos Ingresados!")
             props.navigation.navigate('Listado de Crecimientos')
     
           } catch (error) {
